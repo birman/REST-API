@@ -13,12 +13,9 @@ exports.createCustomer = (req, res, next) => {
         email: req.body.email,
         birthdate: req.body.birthdate,
         credit: req.body.credit,
-        password: req.body.password
+        password: helper.EncryptText(req.body.password)
     };
 
-    console.log("------------------------");
-    console.log(customer.password);
-    console.log("------------------------");
     DTO.create(customer, (err, data) => {
         if (err) {
             res.json({
@@ -44,10 +41,12 @@ exports.getAllCustomers = (req, res, next) => {
                 error: err
             });
         }
-        res.json({
-            message: "OK",
-            data: data
-        });
+        else {
+            res.json({
+                message: "OK",
+                data: data
+            });
+        }
     });
 }
 
@@ -61,10 +60,12 @@ exports.getCustomerByDocument = (req, res, next) => {
                 error: err
             });
         }
-        res.json({
-            message: "OK",
-            data: data
-        });
+        else {
+            res.json({
+                message: "OK",
+                data: data
+            });
+        }
     });
 }
 
@@ -87,10 +88,12 @@ exports.updateCustomer = (req, res, next) => {
                 error: err
             });
         }
-        res.json({
-            message: "OK",
-            data: data
-        });
+        else {
+            res.json({
+                message: "OK",
+                data: data
+            });
+        }
     });
 }
 
@@ -103,8 +106,11 @@ exports.removeCustomer = (req, res, next) => {
                 error: err
             });
         }
-        res.json({
-            message: "OK"
-        });
+        else {
+            res.json({
+                message: "OK",
+                data: data
+            });
+        }
     });
 }
