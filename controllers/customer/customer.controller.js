@@ -25,12 +25,13 @@ exports.createCustomer = (req, res, next) => {
                 message: "KO",
                 error: err
             });
-        } 
-        res.json({
-            message: "OK",
-            data: data
-        });
-        
+        }
+        else {
+            res.json({
+                message: "OK",
+                data: data
+            });
+        }
     });
 }
 
