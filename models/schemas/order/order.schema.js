@@ -1,4 +1,5 @@
 /** packages */
+
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
@@ -13,34 +14,31 @@ const orderSchema = new Schema(
             type: "String",
             required: true
         },
-        retryHour: {
+        deliveryDate: {
             type: "Date",
             required: true
         },
-        documentCustomer: {
+        customerDocument: {
             type: "String",
             required: true
         },
-        typePaid: {
+        paymentMethod: {
             type: "String",
             required: true,
         },
-        value: {
-            type: "String",
+        total: {
+            type: "Number",
             required: true,
         },
         products: [{
             name: {
-                type: "String",
-                // required: true
+                type: "String"
             },
             amount: {
-                type: "Number",
-                // require: true
+                type: "Number"
             },
-            value: {
-                type: "Number",
-                // require: true
+            total: {
+                type: "Number"
             }
         }]
     },

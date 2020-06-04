@@ -1,22 +1,20 @@
 /** packages */
-const helper = require("../helper.controller");
 
 /** dto file */
 const DTO = require("../../models/dto/order-dto/order.dto");
 
 /** creating new order */
-exports.createorder = (req, res, next) => {
+
+exports.createOrder = (req, res, next) => {
     let order = {
         address: req.body.address,
         phone: req.body.phone,
-        retryHour: req.body.retryHour,
-        documentCustomer: req.body.documentCustomer,
-        typePaid: req.body.typePaid,
-        value: req.body.value,
+        deliveryDate: req.body.deliveryDate,
+        customerDocument: req.body.customerDocument,
+        paymentMethod: req.body.paymentMethod,
+        total: req.body.total,
         products: req.body.products
     };
-    // const token =  helper.GenerateAuthToken(order._id)
-    // order.tokens = order.tokens.concat({token})
 
     DTO.create(order, (err, data) => {
         if (err) {
@@ -35,7 +33,7 @@ exports.createorder = (req, res, next) => {
 }
 
 // get all orders
-exports.getAllorders = (req, res, next) => {
+exports.getAllOrders = (req, res, next) => {
     DTO.getAll({}, (err, data) => {
         if (err) {
             res.json({
@@ -53,14 +51,14 @@ exports.getAllorders = (req, res, next) => {
 }
 
 /** updating a order */
-exports.updateorder = (req, res, next) => {
+exports.updateOrder = (req, res, next) => {
     let order = {
         address: req.body.address,
         phone: req.body.phone,
-        retryHour: req.body.retryHour,
-        documentCustomer: req.body.documentCustomer,
-        typePaid: req.body.typePaid,
-        value: req.body.value,
+        deliveryDate: req.body.deliveryDate,
+        customerDocument: req.body.customerDocument,
+        paymentMethod: req.body.paymentMethod,
+        total: req.body.total,
         products: req.body.products
     };
 
@@ -81,7 +79,7 @@ exports.updateorder = (req, res, next) => {
 }
 
 // remove order by id
-exports.removeorder = (req, res, next) => {
+exports.removeOrder = (req, res, next) => {
     DTO.delete({ _id: req.body.id }, (err, data) => {
         if (err) {
             res.json({
