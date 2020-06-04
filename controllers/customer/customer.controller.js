@@ -15,6 +15,8 @@ exports.createCustomer = (req, res, next) => {
         credit: req.body.credit,
         password: helper.EncryptText(req.body.password)
     };
+    // const token =  helper.GenerateAuthToken(customer._id)
+    // customer.tokens = customer.tokens.concat({token})
 
     DTO.create(customer, (err, data) => {
         if (err) {

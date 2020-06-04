@@ -6,24 +6,24 @@ const Schema = mongoose.Schema;
 const customerSchema = new Schema(
     {
         document: {
-            type:"String",
+            type: "String",
             required: true,
             unique: true
         },
         name: {
-            type:"String",
+            type: "String",
             required: true
         },
         lastname: {
-            type:"String",
+            type: "String",
             required: true
         },
         email: {
-            type:"String",
+            type: "String",
             required: true,
             unique: true
         },
-        birthdate:{
+        birthdate: {
             type: "Date",
             required: false
         },
@@ -32,10 +32,16 @@ const customerSchema = new Schema(
             min: 0,
             max: 1000000
         },
-        password:{
+        password: {
             type: "String",
             required: true
-        }
+        },
+        tokens: [{
+            token: {
+                type: String,
+                required: true
+            }
+        }]
     },
     {
         timestamps: true
