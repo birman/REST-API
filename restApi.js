@@ -2,6 +2,7 @@
 const express = require("express");
 const config = require("config");
 const controller = require("./controllers/customer/customer.controller")
+const orderController = require("./controllers/order/order.controller")
 const bodyParser = require("body-parser");
 
 /** server configuration */
@@ -46,6 +47,29 @@ app.delete("/api/customer/delete", (req, res, next) => {
 app.post("/api/customer/login", (req, res, next) => {
 
 });
+
+//  Order
+
+// POST
+app.post("/api/order/create", (req, res, next) => {
+    orderController.createorder(req, res, next);
+});
+
+// GET
+app.get("/api/order/getAll", (req, res, next) => {
+    orderController.getAllorders(req, res, next);
+});
+
+// UPDATE
+app.put("/api/order/update", (req, res, next) => {
+    orderController.updateorder(req, res, next);
+});
+
+// DELETE
+app.delete("/api/order/delete", (req, res, next) => {
+    orderController.removeorder(req, res, next);
+});
+
 
 /** Run server */
 const port = config.get("port");
