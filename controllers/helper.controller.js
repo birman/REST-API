@@ -18,7 +18,11 @@ exports.DecryptText = (textEncrypted) => {
     return originalText;
 }
 
-exports.GenerateAuthToken = async function (id) {
-    const token = jwt.sign({ _id: id }, JWT_KEY)
-    return token
+exports.GenerateAuthToken = function (payload) {
+
+    const token2 = jwt.sign(payload, JWT_KEY, {
+        expiresIn: 1440
+    });
+
+    return token2;
 }

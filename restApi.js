@@ -51,9 +51,18 @@ app.delete("/api/customer/delete", (req, res, next) => {
 
 /** Login EndPoints */
 
+/*app.post("/api/security/login", (req, res, next) => {
+    loginController.findByCredententials(req, res, next);
+});*/
+
 app.post("/api/security/login", (req, res, next) => {
     loginController.findByCredententials(req, res, next);
 });
+
+app.post("/api/security/logout", (req, res, next) => {
+    loginController.logout(req, res, next);
+});
+
 
 /** Order EndPoints */
 
