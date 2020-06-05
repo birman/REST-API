@@ -18,7 +18,7 @@ exports.DecryptText = (textEncrypted) => {
     return originalText;
 }
 
-exports.GenerateAuthToken = async function (userId) {
-    const token = jwt.sign({ _id: userId }, JWT_KEY)
+exports.GenerateAuthToken = async function (id) {
+    const token = jwt.sign({ _id: id }, JWT_KEY)
     return token
 }

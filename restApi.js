@@ -4,7 +4,7 @@ const express = require("express");
 const config = require("config");
 const customerController = require("./controllers/customer/customer.controller")
 const orderController = require("./controllers/order/order.controller")
-// const loginController = require("./controllers/login/login.controller")
+const loginController = require("./controllers/security/login.controller")
 const bodyParser = require("body-parser");
 
 /** server configuration */
@@ -51,8 +51,8 @@ app.delete("/api/customer/delete", (req, res, next) => {
 
 /** Login EndPoints */
 
-app.post("/api/customer/login", (req, res, next) => {
-    // loginController.removeCustomer(req, res, next);
+app.post("/api/security/login", (req, res, next) => {
+    loginController.findByCredententials(req, res, next);
 });
 
 /** Order EndPoints */
